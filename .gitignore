@@ -1,1 +1,5 @@
 gen.pth
+gen.pth.new
+disc.pth.new
+resized_images
+kaggle_dataset

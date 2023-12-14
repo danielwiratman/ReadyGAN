@@ -34,6 +34,28 @@ class MyImageFolder(Dataset):
         low_res = config.lowres_transform(image=both_transform)["image"]
         high_res = config.highres_transform(image=both_transform)["image"]
         return low_res, high_res
+    
+class Group4Dataset(Dataset):
+    def __init__(self, root_dir):
+        super(Group4Dataset, self).__init__()
+        self.root_dir = root_dir
+        self.image_names = os.listdir(root_dir)
+        self.data = []
+        for index, name in enumerate(self.image_names):
+            self.data += list(zip([name], [index]))
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, index):
+        image_path = os.path.join(self.root_dir, self.image_names[index])
+        print(image_path)
+        image = cv2.imread(image_path)
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        both_transform = config.both_transforms(image=image)["image"]
+        low_res = config.lowres_transform(image=both_transform)["image"]
+        high_res = config.highres_transform(image=both_transform)["image"]
+        return low_res, high_res
 
 
 def test():

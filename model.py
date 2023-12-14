@@ -1,7 +1,6 @@
 import torch
 from torch import nn
 
-
 class ConvBlock(nn.Module):
     def __init__(self, in_channels, out_channels, use_act, **kwargs):
         super().__init__()
@@ -16,7 +15,6 @@ class ConvBlock(nn.Module):
     def forward(self, x):
         return self.act(self.cnn(x))
 
-
 class UpsampleBlock(nn.Module):
     def __init__(self, in_c, scale_factor=2):
         super().__init__()
@@ -26,7 +24,6 @@ class UpsampleBlock(nn.Module):
 
     def forward(self, x):
         return self.act(self.conv(self.upsample(x)))
-
 
 class DenseResidualBlock(nn.Module):
     def __init__(self, in_channels, channels=32, residual_beta=0.2):

@@ -5,8 +5,8 @@ from albumentations.pytorch import ToTensorV2
 
 LOAD_MODEL = True
 SAVE_MODEL = True
-CHECKPOINT_GEN = "gen.pth"
-CHECKPOINT_DISC = "disc.pth"
+CHECKPOINT_GEN = "gen.pth.new"
+CHECKPOINT_DISC = "disc.pth.new"
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 LEARNING_RATE = 1e-4
 NUM_EPOCHS = 10000
